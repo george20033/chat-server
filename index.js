@@ -28,10 +28,7 @@ try {
 
   const ioServer = new Server(expressServer, {
     cors: {
-      origin:
-        process.env.CLIENT_URL === "production"
-          ? false
-          : ["http://localhost:5500", "http://127.0.0.1:5500"],
+      origin: "*",
     },
   });
 
