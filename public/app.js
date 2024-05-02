@@ -42,6 +42,7 @@ try {
     socket.emit("activity", nameInput.value);
   });
   socket.on("message", ({ name, message, time }) => {
+    console.log(message);
     document.querySelector(".activity").textContent = "";
     const li = document.createElement("li");
     li.className = "post";

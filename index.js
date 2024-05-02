@@ -7,7 +7,6 @@ import { fileURLToPath } from "url";
 try {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
-  console.log(__dirname);
 
   const app = express();
   const port = process.env.PORT || 3550;
@@ -22,7 +21,7 @@ try {
   };
 
   const expressServer = app.listen(port, () =>
-    console.log(`Example app listening on port ${port}!`)
+    console.log(`Server running on port ${port}`)
   );
   // the backend server and frontend server are on the same server
   app.use(express.static(path.join(__dirname, "public")));
@@ -74,11 +73,12 @@ try {
       ioServer.emit("roomList", activeRooms());
     });
     // here we listen for the message event
-    socket.on("message", ({ name, text }) => {
+    socket.on("message", ({ name, message }) => {
+      console.log(name, message);
       const user = findUser(socket.id);
       // .emit sends the message to all connected clients in the room
       if (user.room) {
-        ioServer.to(user.room).emit("message", createMessage(name, text));
+        ioServer.to(user.room).emit("message", createMessage(name, message));
       }
     });
     socket.on("disconnect", () => {
