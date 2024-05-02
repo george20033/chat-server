@@ -2,7 +2,7 @@ try {
   // Code for the client side of the chat application is shown below:
   //io imported from the cdn
   //put the base url of the server
-  const socket = io("https://chat-server-tnzh.onrender.com");
+  const socket = io("https://chat-server-kappa-ten.vercel.app/");
   const msgInput = document.querySelector("#message");
   const nameInput = document.querySelector("#name");
   const chatRoom = document.querySelector("#room");
