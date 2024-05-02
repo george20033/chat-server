@@ -36,7 +36,7 @@ try {
     //when connected - only to user
     socket.emit("message", createMessage(ADMIN, "Welcome to the chat"));
     //when connected - to all client except the user
-
+ioServer.emit("roomList", activeRooms());
     socket.on("enterRoom", ({ name, room }) => {
       const previousRoom = findUser(socket.id)?.room;
       if (previousRoom) {
